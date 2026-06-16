@@ -119,6 +119,7 @@ public class ProductoController {
         });
     }
     public void actualizarProducto(){
+        
             int codigoActualizado = Integer.parseInt(actualizarProductoView.getTxtActualizarProducto().getText());
             String nuevoN = actualizarProductoView.getTxtNombreA().getText(); 
             double nuevoP = Double.parseDouble(actualizarProductoView.getTxtPrecioA().getText()); 
