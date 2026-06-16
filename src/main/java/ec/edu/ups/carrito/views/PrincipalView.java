@@ -12,17 +12,32 @@ import ec.edu.ups.carrito.models.controller.ProductoController;
  */
 public class PrincipalView extends javax.swing.JFrame {
 
-        private CrearProductoView crearProductoView; 
-        private ProductoController productoController;
+    private CrearProductoView crearProductoView;
+    private ProductoController productoController;
+    private BuscarProducto buscarProductoView;
+    private EliminarProductoView eliminarProductoView;
+    private ActualizarProducto actualizarProductoView;
+
     /**
      * Creates new form PrincipalView
      */
     public PrincipalView() {
         initComponents();
+
+        crearProductoView = new CrearProductoView();
+        buscarProductoView = new BuscarProducto();
+        eliminarProductoView = new EliminarProductoView();
+        actualizarProductoView = new ActualizarProducto();
         
-        
+
+        productoController = new ProductoController(
+                crearProductoView,
+                buscarProductoView,
+                eliminarProductoView,
+                actualizarProductoView
+        );
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -63,6 +78,7 @@ public class PrincipalView extends javax.swing.JFrame {
 
         saveAsMenuItem.setMnemonic('a');
         saveAsMenuItem.setText("Eliminar");
+        saveAsMenuItem.addActionListener(this::saveAsMenuItemActionPerformed);
         productosMenu.add(saveAsMenuItem);
 
         exitMenuItem.setMnemonic('x');
@@ -116,26 +132,45 @@ public class PrincipalView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void exitMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItemActionPerformed
-        System.exit(0);
+        if (actualizarProductoView == null || !actualizarProductoView.isVisible()) {
+
+        desktopPane.add(actualizarProductoView);
+        actualizarProductoView.setVisible(true);
+    }
     }//GEN-LAST:event_exitMenuItemActionPerformed
 
     private void copyMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_copyMenuItemActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_copyMenuItemActionPerformed
 
     private void buscarMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarMenuItemActionPerformed
         // TODO add your handling code here:
+        if (buscarProductoView == null || !buscarProductoView.isVisible()) {
+
+            desktopPane.add(buscarProductoView);
+            buscarProductoView.setVisible(true);
+        }
+
     }//GEN-LAST:event_buscarMenuItemActionPerformed
 
     private void MenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemActionPerformed
         // TODO add your handling code here:
-        if(crearProductoView==null || !crearProductoView.isVisible()){
-            crearProductoView = new CrearProductoView();
-            productoController = new ProductoController(crearProductoView);
+        if (crearProductoView == null || !crearProductoView.isVisible()) {
+
             crearProductoView.setVisible(true);
             desktopPane.add(crearProductoView);
         }
     }//GEN-LAST:event_MenuItemActionPerformed
+
+    private void saveAsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveAsMenuItemActionPerformed
+        // TODO add your handling code here:
+        if (eliminarProductoView == null || !eliminarProductoView.isVisible()) {
+
+            desktopPane.add(eliminarProductoView);
+            eliminarProductoView.setVisible(true);
+        }
+    }//GEN-LAST:event_saveAsMenuItemActionPerformed
 
     /**
      * @param args the command line arguments

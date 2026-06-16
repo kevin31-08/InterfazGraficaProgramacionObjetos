@@ -1,41 +1,141 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package ec.edu.ups.carrito.models.controller;
 
 import ec.edu.ups.carrito.models.Producto;
+import ec.edu.ups.carrito.views.ActualizarProducto;
+import ec.edu.ups.carrito.views.BuscarProducto;
 import ec.edu.ups.carrito.views.CrearProductoView;
+import ec.edu.ups.carrito.views.EliminarProductoView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
-/**
- *
- * @author LAB_04
- */
 public class ProductoController {
+
     private Producto producto;
     private CrearProductoView crearProductoView;
+    private BuscarProducto buscarProductoView;
+    private ArrayList<Producto> listaProductos;
+    private EliminarProductoView eliminarProductoView;
+    private ActualizarProducto actualizarProductoView;
 
-    public ProductoController(CrearProductoView crearProductoView) {
-        
+    public ProductoController(CrearProductoView crearProductoView, BuscarProducto buscarProductoView, EliminarProductoView eliminarProductoView, ActualizarProducto actualizarProductoView) {
+
         this.crearProductoView = crearProductoView;
-        configurarProductoView();
+        configurarEventosCrearProducto();
+        this.buscarProductoView = buscarProductoView;
+        this.listaProductos = new ArrayList<>();
+        configurarEventosBuscarProductos();
+        this.eliminarProductoView = eliminarProductoView;
+        configurarEventosEliminarProductos();
+        this.actualizarProductoView = actualizarProductoView;
+        configurarEventosActualizarProducto();
     }
-    
-    public void crearProducto(){
+
+    public void crearProducto() {
+        //Este metodo debe acceder a las cajas de las vistas o View 
         int codigo = Integer.parseInt(crearProductoView.getTxtCodigo().getText());
         String nombre = crearProductoView.getTxtNombre().getText();
         double precio = Double.parseDouble(crearProductoView.getTxtPrecio().getText());
-        producto = new Producto(codigo,nombre,precio);
-        System.out.println("se guardo");
+
+        producto = new Producto(codigo, nombre, precio);
+        listaProductos.add(producto);
+        System.out.println("Producto creado exitosamente");
+
     }
-    
-    public void configurarProductoView(){
-        crearProductoView.getBtnAceptar().addActionListener(new ActionListener(){
+
+    public void configurarEventosCrearProducto() {
+        crearProductoView.getBtnAceptar().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(
+                null,
+                "Producto Creado Correctamente"
+        );
                 crearProducto();
+            }
+        });
+
+    }
+
+    public void buscarProducto() {
+        int codigo = Integer.parseInt(buscarProductoView.getTxtMostrar().getText());
+
+        for (Producto producto : listaProductos) {
+            if (producto.getCodigo() == codigo) {
+                buscarProductoView.getTxtMostrarProducto().setText(
+                        "Producto encontrado: " + producto.getNombre()
+                        + "\nPrecio: " + producto.getPrecio()
+                );
+                break;
+
+            }
+        }
+    }
+
+    public void configurarEventosBuscarProductos() {
+        buscarProductoView.getBjnMostrar().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                buscarProducto();
+            }
+
+        });
+    }
+
+    public void eliminarProducto() {
+        int codigo = Integer.parseInt(eliminarProductoView.getTxtEliminarProducto().getText());
+        for (Producto producto : listaProductos) {
+            if (producto.getCodigo() == codigo) {
+                JOptionPane.showMessageDialog(
+                        null,
+                        "Producto eliminado correctamente"
+                );
+                break;
+
+            }
+        }
+    }
+
+    public void configurarEventosEliminarProductos() {
+        eliminarProductoView.getBtnAceptarEliminar().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                eliminarProducto();
+            }
+
+        });
+    }
+
+    public void actualizarProducto() {
+        int codigo = Integer.parseInt(actualizarProductoView.getTxtCodigoProducto().getText());
+        String nombre = actualizarProductoView.getTxtNombreProducto().getText();
+        double precio = Double.parseDouble(actualizarProductoView.getTxtPrecioProducto().getText());
+
+        for (Producto producto : listaProductos) {
+
+            if (producto.getCodigo() == codigo) {
+
+                producto.setNombre(nombre);
+                producto.setPrecio(precio);
+
+                JOptionPane.showMessageDialog(
+                        null,
+                        "Producto actualizado correctamente"
+                );
+                break;
+            }
+        }
+    }
+
+    public void configurarEventosActualizarProducto() {
+
+        actualizarProductoView.getBtnGuardar().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                actualizarProducto();
             }
         });
     }
