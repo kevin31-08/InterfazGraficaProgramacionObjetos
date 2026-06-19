@@ -5,6 +5,7 @@
 package ec.edu.ups.carrito.views;
 
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 /**
@@ -50,6 +51,11 @@ public class CrearProductoView extends javax.swing.JInternalFrame {
 
     public void setBtnAceptar(JButton btnAceptar) {
         this.btnAceptar = btnAceptar;
+    }
+    
+    public void mostrarMnesaje(String mensaje ){
+        JOptionPane.showMessageDialog(this, mensaje);
+        dispose();
     }
     
 

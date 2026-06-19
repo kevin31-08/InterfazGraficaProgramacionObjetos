@@ -1,5 +1,6 @@
 package ec.edu.ups.carrito.models.controller;
 
+import ec.edu.ups.carrito.models.DAo.ProductoDAO;
 import ec.edu.ups.carrito.models.Producto;
 import ec.edu.ups.carrito.views.ActualizarProducto;
 import ec.edu.ups.carrito.views.BuscarProducto;
@@ -15,16 +16,20 @@ public class ProductoController {
     private Producto producto;
     private CrearProductoView crearProductoView;
     private BuscarProducto buscarProductoView;
-    private ArrayList<Producto> listaProductos;
     private EliminarProductoView eliminarProductoView;
     private ActualizarProducto actualizarProductoView;
+    private ProductoDAO productoDAO;
 
-    public ProductoController(CrearProductoView crearProductoView, BuscarProducto buscarProductoView, EliminarProductoView eliminarProductoView, ActualizarProducto actualizarProductoView) {
+   
+    
+    
+
+    public ProductoController(CrearProductoView crearProductoView,ProductoDAO productoDAO, BuscarProducto buscarProductoView, EliminarProductoView eliminarProductoView, ActualizarProducto actualizarProductoView) {
 
         this.crearProductoView = crearProductoView;
         configurarEventosCrearProducto();
+        this.productoDAO = productoDAO;
         this.buscarProductoView = buscarProductoView;
-        this.listaProductos = new ArrayList<>();
         configurarEventosBuscarProductos();
         this.eliminarProductoView = eliminarProductoView;
         configurarEventosEliminarProductos();
@@ -38,9 +43,9 @@ public class ProductoController {
         String nombre = crearProductoView.getTxtNombre().getText();
         double precio = Double.parseDouble(crearProductoView.getTxtPrecio().getText());
 
-        producto = new Producto(codigo, nombre, precio);
-        listaProductos.add(producto);
-        System.out.println("Producto creado exitosamente");
+        Producto producto = new Producto(codigo, nombre, precio);
+        productoDAO.crear(producto);
+        crearProductoView.mostrarMnesaje("Producto creado exitosamente");
 
     }
 
@@ -48,10 +53,6 @@ public class ProductoController {
         crearProductoView.getBtnAceptar().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(
-                null,
-                "Producto Creado Correctamente"
-        );
                 crearProducto();
             }
         });
@@ -60,17 +61,7 @@ public class ProductoController {
 
     public void buscarProducto() {
         int codigo = Integer.parseInt(buscarProductoView.getTxtMostrar().getText());
-
-        for (Producto producto : listaProductos) {
-            if (producto.getCodigo() == codigo) {
-                buscarProductoView.getTxtMostrarProducto().setText(
-                        "Producto encontrado: " + producto.getNombre()
-                        + "\nPrecio: " + producto.getPrecio()
-                );
-                break;
-
-            }
-        }
+        productoDAO.buscar(codigo);
     }
 
     public void configurarEventosBuscarProductos() {
@@ -85,16 +76,7 @@ public class ProductoController {
 
     public void eliminarProducto() {
         int codigo = Integer.parseInt(eliminarProductoView.getTxtEliminarProducto().getText());
-        for (Producto producto : listaProductos) {
-            if (producto.getCodigo() == codigo) {
-                JOptionPane.showMessageDialog(
-                        null,
-                        "Producto eliminado correctamente"
-                );
-                break;
-
-            }
-        }
+        productoDAO.eliminar(codigo);
     }
 
     public void configurarEventosEliminarProductos() {
@@ -112,21 +94,9 @@ public class ProductoController {
         int codigo = Integer.parseInt(actualizarProductoView.getTxtCodigoProducto().getText());
         String nombre = actualizarProductoView.getTxtNombreProducto().getText();
         double precio = Double.parseDouble(actualizarProductoView.getTxtPrecioProducto().getText());
-
-        for (Producto producto : listaProductos) {
-
-            if (producto.getCodigo() == codigo) {
-
-                producto.setNombre(nombre);
-                producto.setPrecio(precio);
-
-                JOptionPane.showMessageDialog(
-                        null,
-                        "Producto actualizado correctamente"
-                );
-                break;
-            }
-        }
+        Producto producto = new Producto(codigo, nombre, precio);
+        productoDAO.actualizar(codigo, producto);
+        
     }
 
     public void configurarEventosActualizarProducto() {
