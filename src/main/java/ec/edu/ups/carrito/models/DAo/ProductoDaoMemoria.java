@@ -25,7 +25,7 @@ public class ProductoDaoMemoria implements ProductoDAO {
     @Override
     public void crear(Producto producto) {
         lista.add(producto);
-        System.out.println("holaa");
+        System.out.println("creo el producto");
     }
 
     @Override
@@ -55,6 +55,11 @@ public class ProductoDaoMemoria implements ProductoDAO {
           lista.remove(productoEliminar);
       }
       
+    }
+
+    @Override
+    public List<Producto> listar() {
+        return lista;
     }
     
 }

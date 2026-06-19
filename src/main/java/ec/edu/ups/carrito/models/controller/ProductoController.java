@@ -43,8 +43,8 @@ public class ProductoController {
         String nombre = crearProductoView.getTxtNombre().getText();
         double precio = Double.parseDouble(crearProductoView.getTxtPrecio().getText());
 
-        Producto producto = new Producto(codigo, nombre, precio);
-        productoDAO.crear(producto);
+        Producto producto1 = new Producto(codigo, nombre, precio);
+        productoDAO.crear(producto1);
         crearProductoView.mostrarMnesaje("Producto creado exitosamente");
 
     }
@@ -61,7 +61,10 @@ public class ProductoController {
 
     public void buscarProducto() {
         int codigo = Integer.parseInt(buscarProductoView.getTxtMostrar().getText());
-        productoDAO.buscar(codigo);
+        
+        Producto produ = productoDAO.buscar(codigo);
+        String informacion = "Producto encontrado \n " + produ.getNombre();
+        buscarProductoView.getTxtmos().setText(informacion);
     }
 
     public void configurarEventosBuscarProductos() {
@@ -94,8 +97,8 @@ public class ProductoController {
         int codigo = Integer.parseInt(actualizarProductoView.getTxtCodigoProducto().getText());
         String nombre = actualizarProductoView.getTxtNombreProducto().getText();
         double precio = Double.parseDouble(actualizarProductoView.getTxtPrecioProducto().getText());
-        Producto producto = new Producto(codigo, nombre, precio);
-        productoDAO.actualizar(codigo, producto);
+        Producto producto2 = new Producto(codigo, nombre, precio);
+        productoDAO.actualizar(codigo, producto2);
         
     }
 
