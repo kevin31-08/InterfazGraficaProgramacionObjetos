@@ -26,7 +26,11 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jPanel1" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -55,34 +59,52 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="txtPrecioA" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" alignment="0" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="txtCodigoBuscar" min="-2" pref="94" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="txtNombreA" pref="136" max="32767" attributes="0"/>
+                                          <Component id="txtPrecioA" max="32767" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="130" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="txtActualizarProducto" min="-2" pref="142" max="-2" attributes="0"/>
-                                      <Component id="txtNombreA" min="-2" pref="136" max="-2" attributes="0"/>
-                                  </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="txtActualizarProducto" min="-2" pref="135" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace pref="93" max="32767" attributes="0"/>
+                  <EmptySpace pref="44" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtCodigoBuscar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtActualizarProducto" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -102,7 +124,7 @@
                       <Component id="btnActualizarP" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnCancelarP" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="104" max="32767" attributes="0"/>
+                  <EmptySpace pref="101" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -110,7 +132,7 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Ingrese el codigo:"/>
+            <Property name="text" type="java.lang.String" value="Ingrese el nuevo codigo:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtActualizarProducto">
@@ -124,20 +146,33 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Cancelar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCancelarPActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Ingrese el nombre"/>
+            <Property name="text" type="java.lang.String" value="Ingrese el nuevo nombre"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtNombreA">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Ingrese el precio"/>
+            <Property name="text" type="java.lang.String" value="Ingrese el nuevo precio"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtPrecioA">
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel4">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Ingrese el codigo del producto a actualizar"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtCodigoBuscar">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCodigoBuscarActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

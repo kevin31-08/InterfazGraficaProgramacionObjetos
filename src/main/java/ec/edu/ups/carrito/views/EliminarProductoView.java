@@ -4,6 +4,7 @@
  */
 package ec.edu.ups.carrito.views;
 
+import ec.edu.ups.carrito.models.Producto;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 
@@ -43,7 +44,27 @@ public class EliminarProductoView extends javax.swing.JInternalFrame {
     public void setTxtEliminarProducto(JTextField txtEliminarProducto) {
         this.txtEliminarProducto = txtEliminarProducto;
     }
+
+    public JTextField getTxtMostrarPrecioE() {
+        return txtMostrarPrecioE;
+    }
+
+    public void setTxtMostrarPrecioE(JTextField txtMostrarPrecioE) {
+        this.txtMostrarPrecioE = txtMostrarPrecioE;
+    }
+
+    public JTextField getTxtMostrarProductoE() {
+        return txtMostrarProductoE;
+    }
+
+    public void setTxtMostrarProductoE(JTextField txtMostrarProductoE) {
+        this.txtMostrarProductoE = txtMostrarProductoE;
+    }
     
+    public void mostrarProducto(Producto producto) {
+    txtMostrarProductoE.setText(producto.getNombre());
+    txtMostrarPrecioE.setText(String.valueOf(producto.getPrecio()));
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -54,11 +75,24 @@ public class EliminarProductoView extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel2 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         txtEliminarProducto = new javax.swing.JTextField();
         btnAceptarEliminar = new javax.swing.JButton();
         btnCancelarEliminar = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        txtMostrarProductoE = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        txtMostrarPrecioE = new javax.swing.JTextField();
+
+        jLabel2.setText("jLabel2");
+
+        jTextField1.setText("jTextField1");
+
+        jTextField3.setText("jTextField3");
 
         setBorder(javax.swing.BorderFactory.createTitledBorder("Eliminar "));
         setClosable(true);
@@ -73,22 +107,41 @@ public class EliminarProductoView extends javax.swing.JInternalFrame {
         btnCancelarEliminar.setText("Cancelar");
         btnCancelarEliminar.addActionListener(this::btnCancelarEliminarActionPerformed);
 
+        jLabel3.setText("Producto:");
+
+        txtMostrarProductoE.addActionListener(this::txtMostrarProductoEActionPerformed);
+
+        jLabel4.setText("Precio");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(jLabel1)
-                .addGap(34, 34, 34)
-                .addComponent(txtEliminarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(65, Short.MAX_VALUE)
-                .addComponent(btnAceptarEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
-                .addComponent(btnCancelarEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(101, 101, 101))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtMostrarProductoE, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(34, 34, 34)
+                                .addComponent(txtEliminarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel4)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(66, 66, 66)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(btnAceptarEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(39, 39, 39))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(txtMostrarPrecioE, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(17, 17, 17)))
+                        .addComponent(btnCancelarEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(100, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -97,11 +150,19 @@ public class EliminarProductoView extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtEliminarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCancelarEliminar)
-                    .addComponent(btnAceptarEliminar))
-                .addContainerGap(156, Short.MAX_VALUE))
+                    .addComponent(jLabel3)
+                    .addComponent(txtMostrarProductoE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(txtMostrarPrecioE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAceptarEliminar)
+                    .addComponent(btnCancelarEliminar))
+                .addGap(69, 69, 69))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -122,12 +183,23 @@ public class EliminarProductoView extends javax.swing.JInternalFrame {
                 dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_btnCancelarEliminarActionPerformed
 
+    private void txtMostrarProductoEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMostrarProductoEActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMostrarProductoEActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptarEliminar;
     private javax.swing.JButton btnCancelarEliminar;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField txtEliminarProducto;
+    private javax.swing.JTextField txtMostrarPrecioE;
+    private javax.swing.JTextField txtMostrarProductoE;
     // End of variables declaration//GEN-END:variables
 }

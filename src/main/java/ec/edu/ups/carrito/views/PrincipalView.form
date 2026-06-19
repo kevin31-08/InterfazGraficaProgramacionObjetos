@@ -10,13 +10,13 @@
             <Property name="text" type="java.lang.String" value="Productos"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="crearProductoItem">
+            <MenuItem class="javax.swing.JMenuItem" name="lblcrearProductoItem">
               <Properties>
                 <Property name="mnemonic" type="int" value="111"/>
                 <Property name="text" type="java.lang.String" value="Crear"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="crearProductoItemActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="lblcrearProductoItemActionPerformed"/>
               </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="buscarProductoItem">

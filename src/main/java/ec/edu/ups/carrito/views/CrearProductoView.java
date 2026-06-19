@@ -5,6 +5,7 @@
 package ec.edu.ups.carrito.views;
 
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 /**
@@ -51,7 +52,9 @@ public class CrearProductoView extends javax.swing.JInternalFrame {
     public JButton getBtnCancelar() {
         return btnCancelar;
     }
-    
+    public void mostrarInformacion(String mensaje){
+        JOptionPane.showMessageDialog(this, mensaje);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.

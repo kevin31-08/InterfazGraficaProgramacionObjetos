@@ -4,6 +4,7 @@
  */
 package ec.edu.ups.carrito.views;
 
+import ec.edu.ups.carrito.models.Producto;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 
@@ -45,7 +46,27 @@ public class BuscarProductoView extends javax.swing.JInternalFrame {
     public void setBtnCancelarBusqueda(JButton btnCancelarBusqueda) {
         this.btnCancelarBusqueda = btnCancelarBusqueda;
     }
+
+    public JTextField getTxtMostrarNombre() {
+        return txtMostrarNombre;
+    }
+
+    public void setTxtMostrarNombre(JTextField txtMostrarNombre) {
+        this.txtMostrarNombre = txtMostrarNombre;
+    }
+
+    public JTextField getTxtMostrarPrecio() {
+        return txtMostrarPrecio;
+    }
+
+    public void setTxtMostrarPrecio(JTextField txtMostrarPrecio) {
+        this.txtMostrarPrecio = txtMostrarPrecio;
+    }
     
+    public void mostrarProducto(Producto producto) {
+    txtMostrarNombre.setText(producto.getNombre());
+    txtMostrarPrecio.setText(String.valueOf(producto.getPrecio()));
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -56,11 +77,18 @@ public class BuscarProductoView extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel3 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         txtBuscarCodigo = new javax.swing.JTextField();
         btnBuscar = new javax.swing.JButton();
         btnCancelarBusqueda = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        txtMostrarNombre = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        txtMostrarPrecio = new javax.swing.JTextField();
+
+        jLabel3.setText("jLabel3");
 
         setClosable(true);
         setIconifiable(true);
@@ -77,21 +105,39 @@ public class BuscarProductoView extends javax.swing.JInternalFrame {
         btnCancelarBusqueda.setText("Cancelar");
         btnCancelarBusqueda.addActionListener(this::btnCancelarBusquedaActionPerformed);
 
+        jLabel2.setText("Nombre");
+
+        txtMostrarNombre.addActionListener(this::txtMostrarNombreActionPerformed);
+
+        jLabel4.setText("Precio");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(23, 23, 23)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtBuscarCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(23, 23, 23)
+                                .addComponent(txtBuscarCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel4))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtMostrarPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtMostrarNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(112, 112, 112)
                         .addComponent(btnBuscar)
-                        .addGap(37, 37, 37)
+                        .addGap(30, 30, 30)
                         .addComponent(btnCancelarBusqueda)))
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addContainerGap(88, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -100,11 +146,19 @@ public class BuscarProductoView extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtBuscarCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(txtMostrarNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(txtMostrarPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBuscar)
                     .addComponent(btnCancelarBusqueda))
-                .addContainerGap(134, Short.MAX_VALUE))
+                .addContainerGap(85, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -127,12 +181,21 @@ public class BuscarProductoView extends javax.swing.JInternalFrame {
         dispose(); // TODO add your handling code here:
     }//GEN-LAST:event_btnCancelarBusquedaActionPerformed
 
+    private void txtMostrarNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMostrarNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMostrarNombreActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnCancelarBusqueda;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txtBuscarCodigo;
+    private javax.swing.JTextField txtMostrarNombre;
+    private javax.swing.JTextField txtMostrarPrecio;
     // End of variables declaration//GEN-END:variables
 }
