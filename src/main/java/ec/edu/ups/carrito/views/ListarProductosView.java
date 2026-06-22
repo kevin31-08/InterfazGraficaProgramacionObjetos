@@ -37,7 +37,7 @@ public class ListarProductosView extends javax.swing.JInternalFrame {
     
     }
     public void cargarDatos(List<Producto> productos){
-        
+        modelo.setRowCount(0);
         for( Producto producto : productos){
             Object[] fila = {producto.getCodigo(),
                 producto.getNombre(),

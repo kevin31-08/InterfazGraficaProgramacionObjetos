@@ -16,6 +16,9 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.event.InternalFrameAdapter;
+import javax.swing.event.InternalFrameEvent;
+import javax.swing.event.InternalFrameListener;
 
 /**
  *
@@ -144,10 +147,10 @@ public class ProductoController {
     }
      
      public void configurarEventosListarProducto(){
-         listarProductoView.getBtnListar().addActionListener(new ActionListener() {
+         listarProductoView.addInternalFrameListener(new InternalFrameAdapter(){
              @Override
-             public void actionPerformed(ActionEvent e) {
-                listarProducto();
+             public void internalFrameActivated(InternalFrameEvent e) {
+                 listarProducto();
              }
              
          });
